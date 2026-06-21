@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TraceMap Lite</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <h1>TraceMap Lite</h1>
+      <p>
+        Paste traceroute output, geolocate public IP hops, and visualize the route on a world map.
+      </p>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="card input-card">
+      <div class="section-title">
+        <h2>Traceroute Input</h2>
+        <span>Manual traceroute only</span>
+      </div>
+
+      <textarea
+        id="tracerouteInput"
+        placeholder="Paste Linux/macOS traceroute or Windows tracert output here..."
+        spellcheck="false"
+      ></textarea>
+
+      <div class="source-grid">
+        <label>
+          Source Latitude
+          <input id="sourceLat" type="number" step="any" placeholder="34.5553" />
+        </label>
+
+        <label>
+          Source Longitude
+          <input id="sourceLng" type="number" step="any" placeholder="69.2075" />
+        </label>
+
+        <label>
+          Source Label
+          <input id="sourceLabel" type="text" placeholder="My location" />
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="visualizeBtn" class="primary-btn">Visualize Route</button>
+        <button id="clearBtn">Clear</button>
+        <button id="exampleBtn">Load Example</button>
+      </div>
+
+      <div id="statusMessage" class="status">Ready.</div>
+    </section>
+
+    <section class="card map-card">
+      <div id="map"></div>
+    </section>
+
+    <section class="card table-card">
+      <div class="section-title">
+        <h2>Hop Table</h2>
+        <span id="hopCount">0 hops</span>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Hop</th>
+              <th>IP</th>
+              <th>Hostname</th>
+              <th>Location</th>
+              <th>ISP / ASN</th>
+              <th>Avg Latency</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="hopTableBody">
+            <tr>
+              <td colspan="7" class="empty-row">No route visualized yet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card failed-card">
+      <div class="section-title">
+        <h2>Failed / Unknown Locations</h2>
+      </div>
+
+      <ul id="failedList">
+        <li>No failed lookups yet.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>
+      TraceMap Lite uses Leaflet, OpenStreetMap tiles, and ip-api.com.
+      IP geolocation is approximate.
+    </p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

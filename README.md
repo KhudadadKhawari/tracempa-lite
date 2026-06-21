@@ -4,12 +4,12 @@ TraceMap Lite is a lightweight static traceroute visualizer.
 
 It does **not** run traceroute by itself. You manually run traceroute or tracert on your machine, paste the output into the app, and TraceMap Lite parses public IP hops, geolocates them, and draws the route on an interactive world map.
 
-## Screenshot
+## Screenshots
+### Main Interface
+![TraceMap Lite main interface](./screenshots/1.png)
+### Route Visualization
+![TraceMap Lite route visualization](./screenshots/2.png)
 
-```text
-Screenshot placeholder:
-Add a screenshot here after running the app.
-```
 
 ## Features
 
